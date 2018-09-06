@@ -7,8 +7,8 @@ using namespace std;
 using namespace race2018;
 
 #define THREAD_NUM 1000
-#define MSG_NUM 100
-#define QUE_NUM 20
+#define MSG_NUM 15000
+#define QUE_NUM 200
 
 void put_get(int tid, queue_store &store){
     
@@ -18,7 +18,7 @@ void put_get(int tid, queue_store &store){
         char* data = new char[slogan.size() + 1];
         strcpy(data, slogan.c_str());
         MemBlock msg = {static_cast<void*>(data),
-                        static_cast<size_t>(slogan.size())
+                        static_cast<size_t>(sizeof(data))//slogan.size()+1)
         };
         store.put(quename, msg);
     }
@@ -30,7 +30,7 @@ void put_get(int tid, queue_store &store){
         cout << msg << endl;
     }
     */
-    cout<< "Thread " << tid << " Done!\n";
+//    cout<< "Thread " << tid << " Done!\n";
 }
 
 
